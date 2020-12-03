@@ -748,7 +748,8 @@
                 if (comments[cursor].extendedRange[0] > node.range[1]) {
                     return VisitorOption.Skip;
                 }
-            }
+            },
+            fallback: 'iteration'
         });
 
         cursor = 0;
@@ -781,7 +782,8 @@
                 if (comments[cursor].extendedRange[0] > node.range[1]) {
                     return VisitorOption.Skip;
                 }
-            }
+            },
+            fallback: 'iteration'
         });
 
         return tree;
