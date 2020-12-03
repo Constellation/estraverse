@@ -412,7 +412,8 @@
             current2,
             candidates,
             candidate,
-            sentinel;
+            sentinel,
+            onEnd;
 
         this.__initialize(root, visitor);
 
@@ -425,6 +426,8 @@
         // initialize
         worklist.push(new Element(root, null, null, null));
         leavelist.push(new Element(null, null, null, null));
+
+        onEnd = visitor.onEnd.bind(visitor);
 
         while (worklist.length) {
             element = worklist.pop();
@@ -503,6 +506,10 @@
                     }
                 }
             }
+        }
+
+        if (onEnd) {
+            setTimeout(onEnd, 0);
         }
     };
 
